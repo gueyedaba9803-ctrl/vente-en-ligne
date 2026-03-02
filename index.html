@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aynoumadi Boutique – Tenues Traditionnelles</title>
+<link rel="shortcut icon" href="images/logo (5).png"type="image/x-icon">
+<meta name="description" content="Aynoumadi Boutique – Tenues traditionnelles pour homme, femme et enfant (2 à 16 ans). Paiement Wave disponible.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <img src="images/logo (5).png" width="75" height="43" alt="">
+
+    <span>✦ Tenues Traditionnelles ✦</span>
+  </div>
+  <nav class="desktop-nav">
+    <a href="#collections">Collections</a>
+    <a href="#boutique">Boutique</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div style="display:flex;align-items:center;gap:12px">
+    <button class="cart-icon-btn" onclick="toggleCart()">
+      🛒 <span class="cart-label">Mon Panier</span>
+      <span class="cart-badge" id="cart-badge" style="display:none">0</span>
+    </button>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav-overlay" id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="#collections" onclick="closeMobileNav()"><span class="nav-icon">👗</span>Collections</a>
+  <a href="#boutique" onclick="closeMobileNav()"><span class="nav-icon">🛍️</span>Boutique</a>
+  <a href="#contact" onclick="closeMobileNav()"><span class="nav-icon">✉️</span>Contact</a>
+  <a onclick="closeMobileNav();setTimeout(toggleCart,300)"><span class="nav-icon">🛒</span>Mon Panier</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-tag">Nouvelle Collection 2026</span>
+    <h1>L'Élégance <em>Traditionnelle</em><br>à l'Honneur</h1>
+    <p>Des tenues authentiques pour homme, femme et enfant (2 à 16 ans). Chaque pièce raconte une histoire, chaque tissu porte une âme.</p>
+    <a class="btn btn-gold" href="#boutique">Découvrir la Collection</a>
+    <a class="btn btn-outline" href="#collections">Nos Catégories</a>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-frame" id="hero-frame">
+      <div class="img-placeholder" style="display:none" id="hero-ph"><span class="icon">👗</span><strong>Image Principale</strong><small>Cliquez pour ajouter</small></div>
+      <img id="hero-img" style="display:block" src="images/homme20.png" alt="">
+      <div class="hero-img-overlay">
+      </div>
+      <div class="corner-deco tl"></div><div class="corner-deco tr"></div>
+      <div class="corner-deco bl"></div><div class="corner-deco br"></div>
+    </div>
+  </div>
+</section>
+
+<section id="collections">
+  <div class="section-title"><p class="sub">✦ Explorer ✦</p><h2>Nos Collections</h2></div>
+  <div class="cats">
+    <div class="cat-card">
+      <div class="cat-placeholder" id="cat-homme-ph" style="background:linear-gradient(135deg,#3D1E00,#6B3A1A);display:none"><span style="font-size:4rem">👘</span><p style="color:var(--sand);font-family:'Playfair Display';font-size:1.1rem">Tenues Homme</p></div>
+      <img id="cat-homme-img" style="display:block;position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover" src="images/homme17.jpeg" alt="Tenues Homme">
+      <div class="cat-overlay"><h3>Homme</h3><p>Boubous · Djellabas · Kaftan</p></div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-placeholder" id="cat-femme-ph" style="background:linear-gradient(135deg,#4A2800,#8B5A00);display:none"><span style="font-size:4rem">👗</span><p style="color:var(--sand);font-family:'Playfair Display';font-size:1.1rem">Tenues Femme</p></div>
+      <img id="cat-femme-img" style="display:block;position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover" src="images/femme22.jpeg" alt="Tenues Femme">
+      <div class="cat-overlay"><h3>Femme</h3><p>Robes · Bubus · Ensembles</p></div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-placeholder" id="cat-enfant-ph" style="background:linear-gradient(135deg,#2C3D1A,#4A6741);display:none"><span style="font-size:4rem">🧒</span><p style="color:var(--sand);font-family:'Playfair Display';font-size:1.1rem">Tenues Enfant (2–16 ans)</p></div>
+      <img id="cat-enfant-img" style="display:block;position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover" src="images/garçon2.png" alt="Tenues Enfant">
+      <div class="cat-overlay"><h3>Enfant</h3><p>2 à 16 ans · Fille & Garçon</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="boutique" class="products-section">
+  <div class="section-title"><p class="sub" style="color:var(--gold)">✦ Boutique ✦</p><h2>Nos Articles</h2></div>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterProd('tous',this)">✦ Tous</button>
+    <div style="position:relative;display:inline-block;">
+      <button class="filter-btn has-sub" onclick="toggleHommeMenu(this)">👘 Homme ▾</button>
+      <div class="homme-submenu" id="homme-submenu">
+        <button class="filter-btn sub-btn" onclick="filterProd('basin_gandoura',this);document.getElementById('homme-submenu').classList.remove('open')">🥻 Basin &amp; Gandoura</button>
+        <button class="filter-btn sub-btn" onclick="filterProd('agbada',this);document.getElementById('homme-submenu').classList.remove('open')">👘 Agbada</button>
+        <button class="filter-btn sub-btn" onclick="filterProd('filafil_anglais',this);document.getElementById('homme-submenu').classList.remove('open')">🎽 Filafil Anglais</button>
+        <button class="filter-btn sub-btn" onclick="filterProd('filafil_italien',this);document.getElementById('homme-submenu').classList.remove('open')">✨ Filafil Italien</button>
+      </div>
+    </div>
+    <button class="filter-btn" onclick="filterProd('femme',this)">👗 Femme</button>
+    <button class="filter-btn" onclick="filterProd('fille',this)">👧 Fille (2–16 ans)</button>
+    <button class="filter-btn" onclick="filterProd('garcon',this)">👦 Garçon (2–16 ans)</button>
+  </div>
+  <div class="products-grid" id="products-grid"></div>
+</section>
+
+<section id="admin" class="admin-section" style="display:none">
+  <div class="section-title"><p class="sub">✦ Gestion ✦</p><h2>Modifier les Images</h2></div>
+  <div class="admin-grid" id="admin-grid"></div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    
+    <div class="contact-form-box">
+      <h3>✉️ Envoyez-nous un message</h3>
+      <div id="cf-form-body">
+        <div class="cf-row">
+          <div class="cf"><label>Prénom *</label><input type="text" id="cf-prenom" placeholder="Votre prénom"></div>
+          <div class="cf"><label>Nom *</label><input type="text" id="cf-nom" placeholder="Votre nom"></div>
+        </div>
+        <div class="cf-row">
+          <div class="cf"><label>Téléphone *</label><input type="tel" id="cf-tel" placeholder="77 XXX XX XX"></div>
+          <div class="cf"><label>WhatsApp (optionnel)</label><input type="tel" id="cf-wa" placeholder="77 XXX XX XX"></div>
+        </div>
+        <div class="cf-row full">
+          <div class="cf"><label>Sujet *</label>
+            <select id="cf-sujet">
+              <option value="">— Choisir un sujet —</option>
+              <option>Demande d'information sur un article</option>
+              <option>Commande sur mesure</option>
+              <option>Suivi de commande</option>
+              <option>Livraison et frais de port</option>
+              <option>Partenariat / Revendeur</option>
+              <option>Autre</option>
+            </select>
+          </div>
+        </div>
+        <div class="cf-row full">
+          <div class="cf"><label>Message *</label><textarea id="cf-msg" placeholder="Décrivez votre demande..."></textarea></div>
+        </div>
+        <button class="cf-submit" onclick="sendContact()">✦ Envoyer le Message</button>
+      </div>
+      <div class="cf-success" id="cf-success">
+        <div class="cs-icon">✅</div>
+        <h4>Message envoyé !</h4>
+        <p>Merci <strong id="cf-success-name"></strong> ! Nous avons bien reçu votre message et vous répondrons très rapidement.</p>
+        <button class="cf-new-btn" onclick="resetContact()">Envoyer un autre message</button>
+      </div>
+    </div>
+    <div class="contact-info">
+      <p class="sub">✦ Contactez-nous ✦</p>
+      <h2>Parlons de vos<br><em>Tenues de Rêve</em></h2>
+      <p>Une question sur une tenue, une commande sur mesure ou simplement envie d'en savoir plus ? Nous sommes là pour vous répondre avec plaisir !</p>
+      <div class="contact-details">
+        <div class="contact-detail-item"><span class="cdi-icon">📞</span><div class="cdi-text"><div class="cdi-label">Téléphone / WhatsApp</div><div class="cdi-val">78 507 52 47</div></div></div>
+        <div class="contact-detail-item"><span class="cdi-icon">✉️</span><div class="cdi-text"><div class="cdi-label">Email</div><div class="cdi-val"><a href="mailto:aynoumadiboutique@gmail.com" style="color:inherit;text-decoration:none">aynoumadiboutique@gmail.com</a></div></div></div>
+        <div class="contact-detail-item"><span class="cdi-icon">🌊</span><div class="cdi-text"><div class="cdi-label">Paiement Wave</div><div class="cdi-val">78 507 52 47</div></div></div>
+        <div class="contact-detail-item"><span class="cdi-icon">🕐</span><div class="cdi-text"><div class="cdi-label">Horaires de réponse</div><div class="cdi-val">Lun – Sam, 8h00 – 20h00</div></div></div>
+        <div class="contact-detail-item"><span class="cdi-icon">🚚</span><div class="cdi-text"><div class="cdi-label">Livraison</div><div class="cdi-val">Dakar et environs · Partout au Sénégal</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="flogo">Aynoumadi Boutique</span>
+  <p>✦ Tenues Traditionnelles pour Toute la Famille ✦</p>
+  <p style="margin-top:10px">📞 78 507 52 47· 🌊 Paiement Wave accepté</p>
+  <p style="margin-top:20px;font-size:0.7rem">© 2025 Aynoumadi Boutique — Tous droits réservés</p>
+</footer>
+
+<div class="pw-overlay" id="pw-overlay">
+  <div class="pw-box">
+    <button class="pw-close" onclick="closePwModal()">✕</button>
+    <span class="pw-lock">🔐</span>
+    <h3>Accès Administration</h3>
+    <p>Entrez le mot de passe pour modifier les images de la boutique</p>
+    <div class="pw-input-wrap">
+      <input type="password" id="pw-input" placeholder="Mot de passe" onkeydown="if(event.key==='Enter')checkPassword()">
+      <button class="pw-toggle" onclick="togglePwVisibility()" id="pw-eye">👁️</button>
+    </div>
+    <button class="pw-submit" onclick="checkPassword()">🔓 Accéder</button>
+    <p class="pw-error" id="pw-error">❌ Mot de passe incorrect. Réessayez.</p>
+    <p class="pw-hint">Seul le propriétaire de la boutique peut modifier les images.</p>
+  </div>
+</div>
+
+<div class="admin-logged-in-bar" id="admin-bar">
+  <span>✅ Mode administration actif — Vous pouvez modifier les images</span>
+  <button class="admin-logout-btn" onclick="adminLogout()">🔒 Se déconnecter</button>
+</div>
+
+<div class="cart-overlay-bg" id="cart-bg" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-header">
+    <h3>🛒 Mon Panier</h3>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items-container">
+    <div class="cart-empty"><span class="empty-icon">🛒</span><p>Votre panier est vide.<br>Ajoutez des articles pour commencer !</p></div>
+  </div>
+  <div class="cart-footer" id="cart-footer" style="display:none">
+    <div class="cart-count-line"><span>Articles (<span id="cart-count-f">0</span>)</span><span id="cart-sub-f">0 FCFA</span></div>
+    <div class="cart-total-line"><span>Total</span><span id="cart-total-f">0 FCFA</span></div>
+    <button class="checkout-btn" onclick="openCheckout()">✦ Valider ma Commande</button>
+    <button class="clear-btn" onclick="clearCart()">🗑 Vider le Panier</button>
+  </div>
+</div>
+
+<div class="co-overlay" id="co-overlay">
+  <div class="co-modal">
+    <div class="co-header">
+      <h3>✦ Valider la Commande</h3>
+      <button class="co-close" onclick="closeCheckout()">✕</button>
+    </div>
+    <div class="co-body" id="co-form">
+      <div class="order-summary-box">
+        <h4>📦 Récapitulatif</h4>
+        <div id="co-lines"></div>
+        <div class="order-total-line"><span>Total à payer</span><span id="co-total">0 FCFA</span></div>
+      </div>
+      <p class="fsec">👤 Vos Informations</p>
+      <div class="frow">
+        <div class="ff"><label>Prénom *</label><input id="f-prenom" type="text" placeholder="Votre prénom"></div>
+        <div class="ff"><label>Nom *</label><input id="f-nom" type="text" placeholder="Votre nom"></div>
+      </div>
+      <div class="frow">
+        <div class="ff"><label>Téléphone *</label><input id="f-tel" type="tel" placeholder="77 XXX XX XX"></div>
+        <div class="ff"><label>WhatsApp (optionnel)</label><input id="f-tel-wa" type="tel" placeholder="77 XXX XX XX"></div>
+      </div>
+      <div class="frow full">
+        <div class="ff"><label>Adresse de livraison *</label><input id="f-addr" type="text" placeholder="Quartier, rue, numéro..."></div>
+      </div>
+      <div class="frow">
+        <div class="ff"><label>Ville *</label><input id="f-ville" type="text" placeholder="Ex: Dakar"></div>
+        <div class="ff"><label>Taille / Notes</label><input id="f-taille" type="text" placeholder="Ex: M, L, XL..."></div>
+      </div>
+      <p class="fsec">💳 Mode de Paiement</p>
+      <div class="pay-grid">
+        <div class="pay-opt sel" id="pm-wave" onclick="selectPay('wave')">
+          <span class="pay-logo">🌊</span>
+          <div class="pay-info"><h5>Wave</h5><p>Paiement mobile rapide</p></div>
+        </div>
+        <div class="pay-opt" id="pm-livraison" onclick="selectPay('livraison')">
+          <span class="pay-logo">🏠</span>
+          <div class="pay-info"><h5>À la livraison</h5><p>Payer à la réception</p></div>
+        </div>
+      </div>
+      <div class="wave-box show" id="wave-box">
+        <div class="wave-title-text">🌊 Paiement Wave</div>
+        <p class="wave-subtitle">Envoyez le montant exact à ce numéro Wave :</p>
+        <div class="wave-num-box">
+          <span class="wave-num-label">Numéro Wave Aynoumadi Boutique</span>
+          <span class="wave-num-val">78 507 52 47</span>
+        </div>
+        <button class="wave-copy" onclick="copyWave()">📋 Copier le numéro</button>
+        <div class="wave-amount-box">Montant à envoyer : <strong id="wave-amount">0 FCFA</strong></div>
+        <div class="wave-ref-wrap">
+          <label>Référence de la transaction Wave *</label>
+          <input type="text" id="f-wave-ref" placeholder="Ex: TXN-123456789">
+        </div>
+      </div>
+      <div class="cod-box" id="cod-box">
+        <p>💡 Vous paierez en <strong>espèces</strong> lors de la livraison. Notre livreur vous contactera.</p>
+      </div>
+      <button class="place-order" onclick="placeOrder()">✦ Confirmer ma Commande</button>
+    </div>
+    <div class="success-screen" id="co-success">
+      <div class="sicon">🎉</div>
+      <h3>Commande Confirmée !</h3>
+      <p>Merci pour votre confiance. Votre commande a bien été reçue.</p>
+      <div class="success-ref" id="sref">CMD-000000</div>
+      <p>Nous vous contacterons très bientôt pour organiser la livraison.</p>
+      <button class="success-close" onclick="closeCheckout();clearCart()">Retour à la Boutique</button>
+    </div>
+  </div>
+</div>
+
+<div class="img-modal-overlay" id="img-modal">
+  <div class="img-modal">
+    <button class="img-modal-close" onclick="closeImgModal()">✕</button>
+    <h3>Changer l'Image</h3>
+    <div class="img-preview" id="img-preview"><span style="color:#999">Aperçu</span></div>
+    <div class="img-upload">
+      <label>📁 Choisir une image<input type="file" id="img-file" accept="image/*" onchange="previewImg(this)"></label>
+    </div>
+    <div class="img-modal-actions">
+      <button class="img-cancel" onclick="closeImgModal()">Annuler</button>
+      <button class="img-save" onclick="saveImg()">✓ Sauvegarder</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
