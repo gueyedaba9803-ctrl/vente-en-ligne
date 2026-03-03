@@ -398,9 +398,11 @@ function checkPassword() {
         document.getElementById('pw-input').value = '';
         document.getElementById('pw-error').classList.remove('show');
         document.getElementById('admin-bar').classList.add('show');
-        document.getElementById('admin-toggle').style.display = 'block';
+
+        // Afficher TOUS les boutons modifier
         document.getElementById('hero-edit-btn').style.display = 'block';
-        
+        document.querySelectorAll('.cat-edit-btn').forEach(btn => btn.style.display = 'block');
+
         renderProducts();
         showToast('✅ Admin activé');
         if (pendingImgModal) {
@@ -412,7 +414,6 @@ function checkPassword() {
         document.getElementById('pw-error').classList.add('show');
         document.getElementById('pw-input').value = '';
     }
-    
 }
 
 
@@ -438,8 +439,8 @@ function adminLogout() {
     isAdmin = false;
     document.getElementById('admin-bar').classList.remove('show');
     document.getElementById('admin').style.display = 'none';
-    document.getElementById('admin-toggle').style.display = 'none';
     document.getElementById('hero-edit-btn').style.display = 'none';
+    document.querySelectorAll('.cat-edit-btn').forEach(btn => btn.style.display = 'none');
     renderProducts();
 }
 
@@ -590,3 +591,4 @@ document.addEventListener("keydown", function(e) {
     toggleAdmin();
   }
 });
+
